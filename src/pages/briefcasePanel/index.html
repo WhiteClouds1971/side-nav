@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>briefcasePanel</title>
+	<link rel="stylesheet" href="../../assets/iconfont/iconfont.css"/>
+	<link rel="stylesheet" href="index.css">
+</head>
+<body>
+<div id="briefcase-panel-wrap" class="briefcase-panel-wrap">
+	<div id="briefcase-panel-side-btn" class="briefcase-panel-side-btn">
+		<span id="briefcase-panel-left-btn" class="iconfont icon-arrow-left briefcase-panel-arrow-left"></span>
+		<span id="briefcase-panel-right-btn" class="iconfont icon-arrow-right briefcase-panel-arrow-right"></span>
+	</div>
+	<div class="briefcase-panel">
+		<div class="briefcase-panel-nav">
+			<!--			<span class="iconfont icon-zuojiantou"></span>-->
+			<span></span>
+			<span id="briefcase-panel-step-num"></span>
+			<span id="briefcase-panel-zhongbo" class="iconfont icon-zhongbo"></span>
+		</div>
+		<div class="briefcase-panel-content">
+			<div class="briefcase-panel-description">
+				<p id="briefcase-panel-description"></p>
+			</div>
+			<div class="briefcase-panel-tip">
+				<div id="briefcase-panel-icon" class="briefcase-panel-icon">提示 <span class="iconfont icon-tishi"></span></div>
+				<div id="briefcase-panel-tip-item-wrap" class="briefcase-panel-tip-item-wrap">
+				</div>
+			</div>
+		</div>
+		<div class="briefcase-panel-bottom-btn">
+			<span id="briefcase-panel-back-btn" class="briefcase-panel-bottom-btn-item">上一步</span>
+			<span id="briefcase-panel-next-btn" class="briefcase-panel-bottom-btn-item">下一步</span>
+		</div>
+	</div>
+</div>
+</body>
+<script>
+	const wrapDOM = document.getElementById("briefcase-panel-wrap")
+	const arrowLeftDOM = document.getElementById("briefcase-panel-left-btn")
+	const arrowRightDOM = document.getElementById("briefcase-panel-right-btn")
+	const sideBtnDOM = document.getElementById("briefcase-panel-side-btn")
+
+	let sideBtnVisible = true
+	sideBtnDOM.onclick = () => {
+		if (sideBtnVisible) {
+			wrapDOM.style.width = "0"
+			wrapDOM.style.padding = "0"
+			arrowRightDOM.style.display = 'none'
+			arrowLeftDOM.style.display = 'block'
+			sideBtnVisible = false
+		} else {
+			wrapDOM.style.width = "250px"
+			wrapDOM.style.padding = "0 10px"
+			arrowRightDOM.style.display = 'block'
+			arrowLeftDOM.style.display = 'none'
+			sideBtnVisible = true
+		}
+	}
+
+	const tipWrapDOM = document.getElementById("briefcase-panel-tip-item-wrap")
+	const tipIcon = document.getElementById("briefcase-panel-icon")
+	tipIcon.onclick = () => {
+		tipWrapDOM.style.display = "block"
+	}
+
+	const stepNumDOM = document.getElementById("briefcase-panel-step-num")
+	const descriptionDOM = document.getElementById("briefcase-panel-description")
+	const steps = [
+		{
+			"sort": 1,
+			"description": "减肥的拉屎减肥的啦",
+			"tips": [{
+				"id": "UdkUcpKHzgGP1veq0fh",
+				"createdDate": 1694503028000,
+				"lastModifiedDate": 1694503028000,
+				"createdBy": null,
+				"lastModifiedBy": null,
+				"description": "请点击step1",
+				"sort": 1,
+				"xPath": "//*[@id=\"__layout\"]/div[1]/div[1]/div[1]/button[1]",
+				"rootPath": "/test",
+				"xpath": "//*[@id=\"__layout\"]/div[1]/div[1]/div[1]/button[1]"
+			}, {
+				"id": "WBDxWJItN3C6A3JMco4",
+				"createdDate": 1694503046000,
+				"lastModifiedDate": 1694503046000,
+				"createdBy": null,
+				"lastModifiedBy": null,
+				"description": "请点击step2",
+				"sort": 2,
+				"xPath": "//*[@id=\"__layout\"]/div[1]/div[1]/div[1]/button[2]",
+				"rootPath": "/test",
+				"xpath": "//*[@id=\"__layout\"]/div[1]/div[1]/div[1]/button[2]"
+			}]
+		}, {
+			"sort": 2,
+			"description": "步骤2",
+			"tips": [{
+				"id": "zXoYr9PXRPXOu6MWKLP",
+				"createdDate": 1694503071000,
+				"lastModifiedDate": 1694503071000,
+				"createdBy": null,
+				"lastModifiedBy": null,
+				"description": "请点击step3",
+				"sort": 1,
+				"xPath": "//*[@id=\"__layout\"]/div[1]/div[1]/div[1]/button[3]",
+				"rootPath": "/test",
+				"xpath": "//*[@id=\"__layout\"]/div[1]/div[1]/div[1]/button[3]"
+			}]
+		}, {
+			"sort": 3,
+			"description": "# CSS 图片裁剪属性\r\n\r\nCSS 提供了多种方式来裁剪图片，你可以使用以下属性来控制图片的裁剪：\r\n1. `object-fit`：这个属性用于指定图片如何适应其容器框。它有以下几个可能的值： ^a33527\r\n   - `fill`：图片会拉伸以填满容器框，可能会变形。\r\n   - `contain`：图片会按比例缩放以适应容器框，可能会有留白。\r\n   - `cover`：图片会按比例缩放以覆盖整个",
+			"tips": [{
+				"id": "sEhePucwBqDlGV7DbSO",
+				"createdDate": 1694655172000,
+				"lastModifiedDate": 1694655172000,
+				"createdBy": null,
+				"lastModifiedBy": null,
+				"description": "点这里的4",
+				"sort": 1,
+				"xPath": "//*[@id=\"__layout\"]/div[1]/div[1]/div[1]/button[4]",
+				"rootPath": "/test",
+				"xpath": "//*[@id=\"__layout\"]/div[1]/div[1]/div[1]/button[4]"
+			}]
+		}]
+	let currentStepIndex = 0
+	const modifyStep = () => {
+		if (steps?.length > 0) {
+			const currentStep = steps[currentStepIndex]
+			stepNumDOM.innerHTML = "(" + currentStep.sort + "/" + steps.length + ")"
+			descriptionDOM.innerHTML = currentStep.description
+			tipWrapDOM.style.display = 'none'
+			const itemTemplate =
+				`<div class="briefcase-panel-tip-item">
+          <div class="briefcase-panel-tip-item-title">tipTitle</div>
+          <div class="briefcase-panel-tip-item-text">tipText</div>
+          <div class="briefcase-panel-tip-item-icon">
+            <span id="briefcase-panel-tip-bofang" class="iconfont icon-bofang"></span>
+          </div>
+				</div>`
+			let itemWrapChildrenHtmlCode = ''
+			currentStep.tips?.forEach((tip, index) => {
+				let tipHTMLCode = itemTemplate
+				tipHTMLCode = tipHTMLCode.replace("tipTitle", "提示" + (index + 1))
+				tipHTMLCode = tipHTMLCode.replace("tipText", tip?.description || "")
+				tipHTMLCode = tipHTMLCode.replace("briefcase-panel-tip-bofang", "briefcase-panel-tip-bofang-" + index)
+				itemWrapChildrenHtmlCode = itemWrapChildrenHtmlCode + "\n" + tipHTMLCode
+			})
+			tipWrapDOM.innerHTML = itemWrapChildrenHtmlCode
+			requestAnimationFrame(() => {
+				currentStep?.tips?.forEach((tip, index) => {
+					const bofangDOM = document.getElementById("briefcase-panel-tip-bofang-" + index)
+					bofangDOM.onclick = () => {
+						event.stopPropagation();
+						console.log(tip, index);
+					}
+				})
+			});
+		}
+	}
+
+	const backBtnDOM = document.getElementById("briefcase-panel-back-btn")
+	backBtnDOM.onclick = (event) => {
+		event.stopPropagation();
+		if (steps?.length > 0) {
+			const stepNumTem = currentStepIndex - 1;
+			currentStepIndex = stepNumTem < 0 ? currentStepIndex : stepNumTem;
+			modifyStep();
+		}
+	};
+
+	const nextBtnDOM = document.getElementById("briefcase-panel-next-btn")
+	nextBtnDOM.onclick = (event) => {
+		event.stopPropagation();
+		if (steps?.length > 0) {
+			const stepNumTem = currentStepIndex + 1;
+			currentStepIndex = stepNumTem >= steps?.length ? currentStepIndex : stepNumTem;
+			modifyStep();
+		}
+	};
+
+	const chongboDOM = document.getElementById("briefcase-panel-zhongbo")
+	chongboDOM.onclick = (event) => {
+		event.stopPropagation()
+	}
+
+	modifyStep()
+</script>
+</html>
