@@ -74,6 +74,7 @@
 .briefcase-panel-description {
     overflow-wrap: break-word;
     word-wrap: break-word;
+    margin: 10px 0;
 }
 
 .briefcase-panel-icon {

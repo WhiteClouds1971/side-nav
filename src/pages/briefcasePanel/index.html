@@ -152,9 +152,10 @@
 			requestAnimationFrame(() => {
 				currentStep?.tips?.forEach((tip, index) => {
 					const bofangDOM = document.getElementById("briefcase-panel-tip-bofang-" + index)
-					bofangDOM.onclick = () => {
+					bofangDOM.onclick = (event) => {
 						event.stopPropagation();
-						console.log(tip, index);
+						window.removeIntro()
+						window.showIntro([tip]);
 					}
 				})
 			});
@@ -184,6 +185,7 @@
 	const chongboDOM = document.getElementById("briefcase-panel-zhongbo")
 	chongboDOM.onclick = (event) => {
 		event.stopPropagation()
+		window.removeIntro()
 	}
 
 	modifyStep()
